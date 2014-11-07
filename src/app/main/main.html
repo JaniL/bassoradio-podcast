@@ -1,32 +1,43 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="row">
-  <div class="large-12 large-text-center columns">
-    <div class="panel">
-      <h1>'Allo, 'Allo!</h1>
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      <p>Always a pleasure scaffolding your apps.</p>
-      <p><a class="button radius" ng-href="#">Splendid!</a></p>
+<div class="row" ng-show="loading">
+  <div class="small-12 large-12 column">
+    <h1>Ladataan...</h1>
+  </div>
+</div>
+<div class="row" ng-repeat="podcast in podcasts">
+  <div class="small-12 large-12 column">
+    <div class="row">     
+     <h1>{{podcast.showName}} <small>{{podcast.start |date: "dd.MM.yyyy H.mm"}}</small></h1> 
+   </div>
+   <div class="row">
+    <div class="small-6 large-6 columns">
+      <p>{{podcast.description}}</p>
+    </div>
+    <div class="small-2 large-4 columns">
+      <table at-table at-config="podcast.config" at-sortable at-list="podcast.plays" at-paginated>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td at-implicit at-sortable at-initial-sorting="asc" at-attribute="sort_order"></td>
+            <td at-implicit at-sortable at-attribute="artist"></td>
+            <td at-implicit at-sortable at-attribute="title"></td>
+            <td at-implicit at-sortable at-attribute="duration"></td>
+          </tr>
+        </tbody>
+        <at-pagination at-config="podcast.config" at-list="podcast.plays"></at-pagination>
+      </table>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 column">
+      <a href="{{podcast.mediaUrl}}" class="button alert">Podcast MP3-tiedostona</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 column">
+      <span ng-repeat="tag in podcast.tagArray"><span class="label">{{tag}}</span> </span>
     </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="large-4 columns" ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
-    <div class="th">
-      <img class="right" ng-src="assets/images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
-      <div class="caption">
-        <h3>{{awesomeThing.title}}</h3>
-        <p>{{awesomeThing.description}}</p>
-        <p><a ng-href="{{awesomeThing.url}}">{{awesomeThing.url}}</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
-    <hr>
-    <p>With ♥ from <a href="https://twitter.com/Swiip">@Swiip</a></p>
-  </div>
+<hr>
 </div>
