@@ -7,7 +7,7 @@ Käli bassoradiota varten
 
 Install bower, node and npm
 
-```
+```shell
 # First install bower and npm
 
 # Then install packages:
