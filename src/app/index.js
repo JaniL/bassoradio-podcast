@@ -12,9 +12,18 @@ angular.module('podcastKali', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'
     $urlRouterProvider.otherwise('/');
   })
   .config(function (RestangularProvider) {
-  	// body...
-  	RestangularProvider.setBaseUrl('http://api.basso.fi/v1/');
-  	RestangularProvider.setRequestSuffix('.json');
-  	RestangularProvider.setDefaultHttpFields({cache: true});
+    // body...
+    RestangularProvider.setBaseUrl('http://api.basso.fi/v1/');
+    RestangularProvider.setRequestSuffix('.json');
+    RestangularProvider.setDefaultHttpFields({cache: true});
   })
 ;
+
+soundManager.setup({
+  // where to find flash audio SWFs, as needed
+  // url: '/path/to/swf-files/',
+  onready: function() {
+    // SM2 is ready to play audio!
+    console.log("jou");
+  }
+});

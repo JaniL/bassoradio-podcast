@@ -1,4 +1,5 @@
 
+
 <div class="row" ng-show="loading">
   <div class="small-12 large-12 column">
     <h1>Ladataan...</h1>
@@ -6,14 +7,14 @@
 </div>
 <div class="row" ng-repeat="podcast in podcasts">
   <div class="small-12 large-12 column">
-    <div class="row">     
-     <h1>{{podcast.showName}} <small>{{podcast.start |date: "dd.MM.yyyy H.mm"}}</small></h1> 
+    <div class="row">
+     <h1>{{podcast.showName}} <small>{{podcast.start |date: "dd.MM.yyyy H.mm"}}</small></h1>
    </div>
    <div class="row">
     <div class="small-6 large-6 columns">
       <p>{{podcast.description}}</p>
     </div>
-    <div class="small-2 large-4 columns">
+    <!-- <div class="small-2 large-4 columns">
       <table at-table at-config="podcast.config" at-sortable at-list="podcast.plays" at-paginated>
         <thead></thead>
         <tbody>
@@ -26,11 +27,11 @@
         </tbody>
         <at-pagination at-config="podcast.config" at-list="podcast.plays"></at-pagination>
       </table>
-    </div>  
+    </div>  -->
   </div>
   <div class="row">
     <div class="small-12 large-12 column">
-      <a href="{{podcast.mediaUrl}}" class="button alert">Podcast MP3-tiedostona</a>
+      <a ng-click="playPodcast(podcast)" class="button alert">Podcast MP3-tiedostona</a>
     </div>
   </div>
   <div class="row">
@@ -41,3 +42,6 @@
 </div>
 <hr>
 </div>
+<footer style="width:100%;background-color:gray;height:50px;padding:1em;position:fixed;bottom:0px;">
+<p>Nyt soi: {{nytSoi}} | {{position}} / {{duration}}</p>
+</footer>
