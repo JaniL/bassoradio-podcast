@@ -1,7 +1,9 @@
 bassoradio-podcast
 ==================
 
-Käli bassoradiota varten
+![Kuvankaappaus](http://i.imgur.com/ATRSKHs.png)
+
+Angularkäli Basson On Demand-palvelun podcastien kuunteluun.
 
 ## How to run?
 
