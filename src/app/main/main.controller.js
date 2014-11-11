@@ -11,6 +11,7 @@ angular.module('podcastKali')
     pd.getList().then(function (podcasts) {
       // body...
       $scope.loading = false;
+      $scope.predicate = '-start';
       $scope.podcasts = podcasts.map(function (podcast) {
         podcast.config = {itemsPerPage: 4};
         return podcast;
@@ -23,8 +24,10 @@ angular.module('podcastKali')
 
         console.log("podcast soimaan" + podcast);
 
+        $scope.position = 0;
+        $scope.duration = 0;
+        $scope.nytSoi = podcast.showName;
         if (podcastSM != null) {
-          $scope.nytSoi = podcast.showName;
           podcastSM.resume();
         } else {
           soundManager.createSound({
@@ -32,10 +35,11 @@ angular.module('podcastKali')
             url: podcast.mediaUrl,
             autoPlay: true,
             whileplaying: function() {
-              console.log("jou dudes");
-              console.log($scope);
+              // console.log("jou dudes");
+              // console.log($scope);
               $scope.position = this.position;
               $scope.duration = this.duration;
+              $scope.$apply();
             }
           });
         }

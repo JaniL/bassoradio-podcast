@@ -5,7 +5,7 @@
     <h1>Ladataan...</h1>
   </div>
 </div>
-<div class="row" ng-repeat="podcast in podcasts">
+<div class="row" ng-repeat="podcast in podcasts | orderBy:predicate">
   <div class="small-12 large-12 column">
     <div class="row">
      <h1>{{podcast.showName}} <small>{{podcast.start |date: "dd.MM.yyyy H.mm"}}</small></h1>
@@ -31,7 +31,8 @@
   </div>
   <div class="row">
     <div class="small-12 large-12 column">
-      <a ng-click="playPodcast(podcast)" class="button alert">Podcast MP3-tiedostona</a>
+      <a ng-click="playPodcast(podcast)" class="button alert">Kuuntele</a>
+      <a href="{{podcast.mediaUrl}}" class="button alert">Lataa</a>
     </div>
   </div>
   <div class="row">
